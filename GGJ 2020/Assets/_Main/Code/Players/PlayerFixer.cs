@@ -18,6 +18,7 @@ namespace Players
 
         [Inject] private Player player = null;
         [Inject] private PlayerMovement playerMovement = null;
+        [Inject] private PlayerStorage playerStorage = null;
 
         [Header("COMPONENTS")]
         [SerializeField] private GameObject radialContainer = null;
@@ -44,6 +45,9 @@ namespace Players
 
         private void OnRepair(InputValue value)
         {
+            if (playerStorage.IsStorageFull)
+                return;
+
             if (currentFixable == null)
             {
                 currentFixable = GetClosestFixable();
@@ -92,8 +96,8 @@ namespace Players
 
         private void FixableGained()
         {
-            player.IncreaseScore(currentFixable.Points);
-            currentFixable.DestroyFixable(player.Id);
+            playerStorage.StoreFixable(currentFixable);
+            currentFixable.Grabbed(player.Id);
             radialAnimator.SetTrigger(RadialEndedKey);
             playerMovement.Restart();
             ResetTicks();
@@ -113,6 +117,7 @@ namespace Players
         private void ResetTicks()
         {
             ticks = 0;
+            currentFixable = null;
         }
 
         #endregion

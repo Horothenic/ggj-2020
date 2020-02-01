@@ -35,7 +35,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Push"",
+                    ""name"": ""Action"",
                     ""type"": ""Button"",
                     ""id"": ""4cfccf0a-1ac4-47ea-8814-a0cc7702622f"",
                     ""expectedControlType"": """",
@@ -73,7 +73,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Push"",
+                    ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -120,7 +120,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Repair = m_Player.FindAction("Repair", throwIfNotFound: true);
-        m_Player_Push = m_Player.FindAction("Push", throwIfNotFound: true);
+        m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -172,14 +172,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Repair;
-    private readonly InputAction m_Player_Push;
+    private readonly InputAction m_Player_Action;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
         public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Repair => m_Wrapper.m_Player_Repair;
-        public InputAction @Push => m_Wrapper.m_Player_Push;
+        public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -195,9 +195,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Repair.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
                 @Repair.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
                 @Repair.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRepair;
-                @Push.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPush;
-                @Push.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPush;
-                @Push.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPush;
+                @Action.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                @Action.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                @Action.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -208,9 +208,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Repair.started += instance.OnRepair;
                 @Repair.performed += instance.OnRepair;
                 @Repair.canceled += instance.OnRepair;
-                @Push.started += instance.OnPush;
-                @Push.performed += instance.OnPush;
-                @Push.canceled += instance.OnPush;
+                @Action.started += instance.OnAction;
+                @Action.performed += instance.OnAction;
+                @Action.canceled += instance.OnAction;
             }
         }
     }
@@ -237,6 +237,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRepair(InputAction.CallbackContext context);
-        void OnPush(InputAction.CallbackContext context);
+        void OnAction(InputAction.CallbackContext context);
     }
 }

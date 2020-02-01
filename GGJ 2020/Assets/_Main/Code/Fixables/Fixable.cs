@@ -7,6 +7,7 @@ namespace Fixables
     {
         #region FIELDS
 
+        [SerializeField] private Sprite sprite = null;
         [SerializeField] private int ticks = 5;
         [SerializeField] private int points = 5;
 
@@ -22,15 +23,16 @@ namespace Fixables
 
         public int Ticks { get => ticks; }
         public int Points { get => points; }
+        public Sprite Sprite { get => sprite; }
 
         #endregion
 
         #region BEHAVIORS
 
-        public void DestroyFixable(string playerId)
+        public void Grabbed(string playerId)
         {
             onGain?.Invoke(playerId);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         #endregion

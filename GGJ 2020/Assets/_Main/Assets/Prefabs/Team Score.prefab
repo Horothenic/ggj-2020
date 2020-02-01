@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1664519271144548772}
   - component: {fileID: -633427667091610816}
   m_Layer: 0
-  m_Name: Player Score
+  m_Name: Team Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f15b57071ae4c32938f303b1023572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  playerScore: {fileID: 1664519271360206306}
+  teamId: 1
+  teamScoreText: {fileID: 1664519271360206306}
 --- !u!1 &1664519271360206304
 GameObject:
   m_ObjectHideFlags: 0

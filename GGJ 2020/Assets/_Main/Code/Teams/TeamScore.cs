@@ -5,18 +5,18 @@ using Zenject;
 using CFLFramework.Score;
 using Utilities.Extensions;
 
-namespace Players
+namespace Teams
 {
-    public class PlayerScore : MonoBehaviour
+    public class TeamScore : MonoBehaviour
     {
         #region FIELDS
 
-        private const string ScoreFormat = "Player {0}: {1}";
+        private const string ScoreFormat = "Team {0}: {1}";
 
         [Inject] private ScoreManager scoreManager = null;
 
-        [SerializeField] private string id = "1";
-        [SerializeField] private Text playerScore = null;
+        [SerializeField] private string teamId = "1";
+        [SerializeField] private Text teamScoreText = null;
 
         private string[] keys = null;
 
@@ -26,7 +26,7 @@ namespace Players
 
         private void Awake()
         {
-            keys = new string[] { id };
+            keys = new string[] { teamId };
             scoreManager.scoreUpdated += UpdateScore;
         }
 
@@ -50,7 +50,7 @@ namespace Players
 
         private void UpdateScore(float value)
         {
-            playerScore.text = string.Format(ScoreFormat, id, value);
+            teamScoreText.text = string.Format(ScoreFormat, teamId, value);
         }
 
         #endregion

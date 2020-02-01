@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Push",
+                    "name": "Action",
                     "type": "Button",
                     "id": "4cfccf0a-1ac4-47ea-8814-a0cc7702622f",
                     "expectedControlType": "",
@@ -60,7 +60,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Push",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
