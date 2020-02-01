@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Players
 {
     public class PlayerMovement : MonoBehaviour
     {
         #region FIELDS
 
-        [Header("CONFIGURATIONS")]
         [SerializeField] private float speed = 1;
 
         private new Rigidbody rigidbody = null;
         private Vector3 movement = default(Vector3);
+        private bool movementEnable = true;
 
         #endregion
 
@@ -24,6 +24,9 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!movementEnable)
+                return;
+
             rigidbody.MovePosition(rigidbody.position + (movement * speed * Time.deltaTime));
         }
 
@@ -32,6 +35,16 @@ namespace Player
             movement = value.Get<Vector2>();
             movement.z = movement.y;
             movement.y = 0;
+        }
+
+        public void Stop()
+        {
+            movementEnable = false;
+        }
+
+        public void Restart()
+        {
+            movementEnable = true;
         }
 
         #endregion

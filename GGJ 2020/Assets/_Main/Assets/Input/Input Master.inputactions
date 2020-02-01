@@ -6,17 +6,25 @@
             "id": "16b3664d-ea2a-494c-afa0-afffd5ee453f",
             "actions": [
                 {
-                    "name": "Action",
-                    "type": "Button",
+                    "name": "Move",
+                    "type": "PassThrough",
                     "id": "9ab490e7-89b0-4158-8ad1-ec6c8cc355e7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Move",
-                    "type": "PassThrough",
-                    "id": "2486c607-5541-4ab4-9cee-561da34aacdd",
+                    "name": "Repair",
+                    "type": "Button",
+                    "id": "7cc5d31e-8114-4b86-a052-28098019434f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Push",
+                    "type": "Button",
+                    "id": "4cfccf0a-1ac4-47ea-8814-a0cc7702622f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -25,30 +33,41 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "883ee31b-ac9c-44d4-a53d-837dab9912df",
-                    "path": "<Keyboard>/backspace",
-                    "interactions": "",
+                    "id": "0733539e-e55d-404c-ac45-8782fe2ede0b",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Action",
+                    "groups": "Controller",
+                    "action": "Repair",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "0733539e-e55d-404c-ac45-8782fe2ede0b",
-                    "path": "<XInputController>/buttonSouth",
+                    "id": "5b65df06-4ee7-4589-a1b5-3ee761489541",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Repair",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae072dda-c845-479e-9a90-dbbbea796e91",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Action",
+                    "action": "Push",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "1b7af27d-a933-4b7f-958f-a6e9b49a520b",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
