@@ -11,7 +11,7 @@ namespace Teams
     {
         #region FIELDS
 
-        private const string ScoreFormat = "Team {0}: {1}";
+        private const string ScoreFormat = "Team {0}\n{1}";
 
         [Inject] private ScoreManager scoreManager = null;
 
