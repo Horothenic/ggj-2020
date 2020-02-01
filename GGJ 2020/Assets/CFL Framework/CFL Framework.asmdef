@@ -1,0 +1,19 @@
+{
+    "name": "CFLFramework",
+    "references": [
+        "GUID:7ecd1e09dc6764cc58cc18c761d4e485",
+        "GUID:89def04bc47ba4826803c4ba7604ff0e",
+        "GUID:3b34a740cd713462f9ce94346f4b8765",
+        "GUID:b7144506b763a4cc99f7784c006cf517",
+        "GUID:f3f5d859afc5440419ad5c86ca3bd168",
+        "GUID:9e196cefd08584199bcc4217f059c1d6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
