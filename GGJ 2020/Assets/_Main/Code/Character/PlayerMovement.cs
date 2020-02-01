@@ -10,15 +10,21 @@ namespace Player
         [Header("CONFIGURATIONS")]
         [SerializeField] private float speed = 1;
 
+        private new Rigidbody rigidbody = null;
         private Vector3 movement = default(Vector3);
 
         #endregion
 
         #region BEHAVIORS
 
-        private void Update()
+        private void Awake()
         {
-            transform.Translate(movement * speed * Time.deltaTime, Space.Self);
+            rigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void FixedUpdate()
+        {
+            rigidbody.MovePosition(rigidbody.position + (movement * speed * Time.deltaTime));
         }
 
         private void OnMove(InputValue value)
