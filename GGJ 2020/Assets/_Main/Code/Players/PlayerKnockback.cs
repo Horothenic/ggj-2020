@@ -19,11 +19,12 @@ namespace Players
         [SerializeField] private Animator animator = null;
 
         [Header("CONFIGURATIONS")]
+        [SerializeField] private string flyingFixableTag = null;
         [SerializeField] private float strength = 5;
         [SerializeField] private float knockbackDuration = 0.6f;
 
         private new Rigidbody rigidbody = null;
-        private bool knocked = false;
+        private bool stunned = false;
 
         #endregion
 
@@ -34,26 +35,36 @@ namespace Players
             rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void Knockback(Vector3 hitPosition, string playerId)
+        private void OnTriggerEnter(Collider other)
         {
-            if (knocked)
+            if (stunned || other.gameObject.tag != flyingFixableTag)
                 return;
 
-            knocked = true;
-            playerFixer.TruncateFix(playerId);
+            playerFixer.TruncateFix(player.Id);
+            StartCoroutine(StunRoutine());
+        }
+
+        public void Knockback(Vector3 hitPosition, string playerId)
+        {
+            if (stunned)
+                return;
+
             Vector3 direction = transform.position - hitPosition;
             rigidbody.AddForce(direction * strength, ForceMode.Impulse);
+
+            playerFixer.TruncateFix(playerId);
             StartCoroutine(StunRoutine());
         }
 
         private IEnumerator StunRoutine()
         {
+            stunned = true;
             animator.SetTrigger(StunnedKey);
             player.Stop();
             yield return new WaitForSeconds(knockbackDuration);
             animator.SetTrigger(EndStunKey);
             player.Restart();
-            knocked = false;
+            stunned = false;
         }
 
         #endregion

@@ -11,9 +11,10 @@ namespace Fixables
         [SerializeField] private Sprite normalSprite = null;
         [SerializeField] private Sprite brokenSprite = null;
         [SerializeField] private SpriteRenderer spriteRenderer = null;
+        [SerializeField] private Collider flyingCollider = null;
 
         [Header("CONFIGURATIONS")]
-        [SerializeField] private string floorTag = "Floor";
+        [SerializeField] private string floorTag = null;
         [SerializeField] private int ticks = 5;
         [SerializeField] private int points = 5;
 
@@ -46,6 +47,7 @@ namespace Fixables
 
         private void Broken()
         {
+            flyingCollider.enabled = false;
             grabEnable = true;
             spriteRenderer.sprite = brokenSprite;
         }

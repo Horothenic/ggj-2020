@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5921678955238470492}
+  flyingFixableTag: Flying Fixable
   strength: 10
   knockbackDuration: 0.8
 --- !u!114 &2916250018846119018
