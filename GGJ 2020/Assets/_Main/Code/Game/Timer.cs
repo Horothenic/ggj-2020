@@ -58,7 +58,7 @@ namespace Game
 
         private void UpdateUI()
         {
-            timerText.text = string.Format(TimerFormat, remainingSeconds % 60);
+            timerText.text = string.Format(TimerFormat, remainingSeconds);
         }
 
         private void StartTimer()
