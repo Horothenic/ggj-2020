@@ -31,6 +31,9 @@ namespace Players
             if (!player.PlayerEnable || !movementEnable)
                 return;
 
+            if (movement != Vector3.zero)
+                transform.rotation = Quaternion.LookRotation(-movement);
+
             rigidbody.MovePosition(rigidbody.position + (movement * speed * Time.deltaTime));
         }
 
