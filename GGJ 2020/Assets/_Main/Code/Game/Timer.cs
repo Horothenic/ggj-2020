@@ -16,6 +16,7 @@ namespace Game
         [Inject] private GameManager gameManager = null;
 
         [Header("COMPONENTS")]
+        [SerializeField] private GameObject container = null;
         [SerializeField] private Text timerText = null;
 
         [Header("CONFIGURATIONS")]
@@ -48,12 +49,12 @@ namespace Game
 
         private void AppearTimer()
         {
-            timerText.gameObject.SetActive(true);
+            container.SetActive(true);
         }
 
         private void DisappearTimer()
         {
-            timerText.gameObject.SetActive(false);
+            container.SetActive(false);
         }
 
         private void UpdateUI()

@@ -53,6 +53,11 @@ namespace Players
             }
         }
 
+        private void OnBack(InputValue value)
+        {
+            gameManager.Exit();
+        }
+
         public void Stop()
         {
             playerEnable = false;

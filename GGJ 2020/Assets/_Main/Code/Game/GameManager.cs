@@ -10,6 +10,7 @@ namespace Game
         #region FIELDS
 
         [Header("CONFIGURATIONS")]
+        [SerializeField] private string selectorSceneName = null;
         [SerializeField] private int numberOfPlayers = default(int);
 
         private GameState gameState = GameState.BeforeStart;
@@ -53,6 +54,11 @@ namespace Game
         public void ResetScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void Exit()
+        {
+            SceneManager.LoadScene(selectorSceneName);
         }
 
         #endregion

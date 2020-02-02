@@ -49,6 +49,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""442fbcaf-bbaa-4fd2-b8c0-d318c23d73d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -106,6 +114,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e55a97b-dc33-4748-be60-760f7c8fdef9"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,6 +160,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Repair = m_Player.FindAction("Repair", throwIfNotFound: true);
         m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
         m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
+        m_Player_Back = m_Player.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -194,6 +214,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Repair;
     private readonly InputAction m_Player_Action;
     private readonly InputAction m_Player_Start;
+    private readonly InputAction m_Player_Back;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -202,6 +223,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Repair => m_Wrapper.m_Player_Repair;
         public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputAction @Start => m_Wrapper.m_Player_Start;
+        public InputAction @Back => m_Wrapper.m_Player_Back;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -223,6 +245,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Back.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -239,6 +264,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
             }
         }
     }
@@ -267,5 +295,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnRepair(InputAction.CallbackContext context);
         void OnAction(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }
