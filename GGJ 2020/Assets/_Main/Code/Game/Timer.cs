@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections;
 
 using Zenject;
@@ -10,7 +11,7 @@ namespace Game
     {
         #region FIELDS
 
-        private const string TimerFormat = "{0:00}:{1:00}";
+        private const string TimerFormat = "{0}";
 
         [Inject] private GameManager gameManager = null;
 
@@ -19,8 +20,16 @@ namespace Game
 
         [Header("CONFIGURATIONS")]
         [SerializeField] private float gameDurationSeconds = 30;
+        [SerializeField] private float fewTimeLeftSeconds = 15;
+        [SerializeField] private Color fewTimeColor = Color.white;
 
         private float remainingSeconds = default(float);
+
+        #endregion
+
+        #region EVENTS
+
+        public event UnityAction onFewTime;
 
         #endregion
 
@@ -49,7 +58,7 @@ namespace Game
 
         private void UpdateUI()
         {
-            timerText.text = string.Format(TimerFormat, remainingSeconds / 60, remainingSeconds % 60);
+            timerText.text = string.Format(TimerFormat, remainingSeconds % 60);
         }
 
         private void StartTimer()
@@ -67,9 +76,18 @@ namespace Game
                 yield return new WaitForSeconds(1);
                 remainingSeconds--;
                 UpdateUI();
+
+                if (remainingSeconds == fewTimeLeftSeconds)
+                    FewTimeReached();
             }
 
             gameManager.EndGame();
+        }
+
+        private void FewTimeReached()
+        {
+            timerText.color = fewTimeColor;
+            onFewTime?.Invoke();
         }
 
         #endregion

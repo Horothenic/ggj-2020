@@ -50,7 +50,7 @@ namespace Players
 
             if (currentFixable == null)
             {
-                currentFixable = GetClosestFixable();
+                currentFixable = GetClosestEnabledFixable();
 
                 if (currentFixable != null)
                 {
@@ -66,14 +66,19 @@ namespace Players
             }
         }
 
-        private Fixable GetClosestFixable()
+        private Fixable GetClosestEnabledFixable()
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, fixableLayer);
 
             if (hitColliders != null && hitColliders.Length > 0)
-                return hitColliders[0].gameObject.GetComponent<Fixable>();
+            {
+                Fixable fixable = hitColliders[0].gameObject.GetComponent<Fixable>();
+                return fixable != null && fixable.IsGrabbable ? fixable : null;
+            }
             else
+            {
                 return null;
+            }
         }
 
         private void AddTick()

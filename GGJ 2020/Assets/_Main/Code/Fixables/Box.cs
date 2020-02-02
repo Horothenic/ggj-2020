@@ -20,6 +20,7 @@ namespace Fixables
         public void Score(Fixable fixable)
         {
             scoreManager.IncreaseScore(new string[] { teamId }, fixable.Points);
+            fixable.DestroyFixable();
         }
 
         #endregion
