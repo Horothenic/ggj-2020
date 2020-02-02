@@ -6,6 +6,7 @@ using Zenject;
 using Utilities.Inspector;
 
 using Fixables;
+using Game;
 
 namespace Players
 {
@@ -19,6 +20,7 @@ namespace Players
         [Inject] private Player player = null;
         [Inject] private PlayerMovement playerMovement = null;
         [Inject] private PlayerStorage playerStorage = null;
+        [Inject] private GameManager gameManager = null;
 
         [Header("COMPONENTS")]
         [SerializeField] private GameObject radialContainer = null;
@@ -33,10 +35,23 @@ namespace Players
         [ReadOnly] [SerializeField] private int ticks = 0;
 
         private Fixable currentFixable = null;
+        private bool fixerEnable = true;
 
         #endregion
 
         #region BEHAVIORS
+
+        private void Awake()
+        {
+            gameManager.onStartGame += Restart;
+            gameManager.onEndGame += Stop;
+        }
+
+        private void OnDestroy()
+        {
+            gameManager.onStartGame -= Restart;
+            gameManager.onEndGame -= Stop;
+        }
 
         private void Start()
         {
@@ -45,7 +60,7 @@ namespace Players
 
         private void OnRepair(InputValue value)
         {
-            if (playerStorage.IsStorageFull)
+            if (!fixerEnable || playerStorage.IsStorageFull)
                 return;
 
             if (currentFixable == null)
@@ -118,6 +133,16 @@ namespace Players
         {
             ticks = 0;
             currentFixable = null;
+        }
+
+        public void Stop()
+        {
+            fixerEnable = false;
+        }
+
+        public void Restart()
+        {
+            fixerEnable = true;
         }
 
         #endregion

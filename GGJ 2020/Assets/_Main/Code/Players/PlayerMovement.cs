@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Zenject;
+
+using Game;
+
 namespace Players
 {
     public class PlayerMovement : MonoBehaviour
     {
         #region FIELDS
+
+        [Inject] private GameManager gameManager = null;
 
         [SerializeField] private float speed = 1;
 
@@ -20,6 +26,19 @@ namespace Players
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
+            gameManager.onStartGame += Restart;
+            gameManager.onEndGame += Stop;
+        }
+
+        private void OnDestroy()
+        {
+            gameManager.onStartGame -= Restart;
+            gameManager.onEndGame -= Stop;
+        }
+
+        private void Start()
+        {
+            Stop();
         }
 
         private void FixedUpdate()
