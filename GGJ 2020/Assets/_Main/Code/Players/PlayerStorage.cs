@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using Zenject;
 
 using Fixables;
-using Game;
 
 namespace Players
 {
@@ -13,7 +12,7 @@ namespace Players
     {
         #region FIELDS
 
-        [Inject] private GameManager gameManager = null;
+        [Inject] private Player player = null;
 
         [Header("COMPONENTS")]
         [SerializeField] private Transform fixableImagesParent = null;
@@ -26,7 +25,6 @@ namespace Players
 
         private List<Fixable> storedFixables = new List<Fixable>();
         private List<FixableImage> fixableImages = new List<FixableImage>();
-        private bool storageEnable = true;
 
         #endregion
 
@@ -37,18 +35,6 @@ namespace Players
         #endregion
 
         #region BEHAVIORS
-
-        private void Awake()
-        {
-            gameManager.onStartGame += Restart;
-            gameManager.onEndGame += Stop;
-        }
-
-        private void OnDestroy()
-        {
-            gameManager.onStartGame -= Restart;
-            gameManager.onEndGame -= Stop;
-        }
 
         private void Start()
         {
@@ -63,7 +49,7 @@ namespace Players
 
         private void OnAction(InputValue value)
         {
-            if (!storageEnable || storedFixables.Count == 0)
+            if (!player.PlayerEnable || storedFixables.Count == 0)
                 return;
 
             Box box = GetClosestBox();
@@ -75,7 +61,7 @@ namespace Players
             UpdateUI();
         }
 
-        private Box GetClosestBox()
+        public Box GetClosestBox()
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, boxLayer);
 
@@ -96,16 +82,6 @@ namespace Players
 
             for (int i = 0; i < storedFixables.Count; i++)
                 fixableImages.Add(Instantiate(fixableImagePrefab, fixableImagesParent).Initialize(storedFixables[i]));
-        }
-
-        public void Stop()
-        {
-            storageEnable = false;
-        }
-
-        public void Restart()
-        {
-            storageEnable = true;
         }
 
         #endregion

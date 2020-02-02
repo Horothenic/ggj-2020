@@ -15,15 +15,30 @@ namespace Players
 
         [SerializeField] private string id = "1";
 
+        private bool playerEnable = false;
+
         #endregion
 
         #region PROPERTIES
 
         public string Id { get => id; }
+        public bool PlayerEnable { get => playerEnable; }
 
         #endregion
 
         #region BEHVAIORS
+
+        private void Awake()
+        {
+            gameManager.onStartGame += Restart;
+            gameManager.onEndGame += Stop;
+        }
+
+        private void OnDestroy()
+        {
+            gameManager.onStartGame -= Restart;
+            gameManager.onEndGame -= Stop;
+        }
 
         private void OnStart(InputValue value)
         {
@@ -36,6 +51,16 @@ namespace Players
                     gameManager.ResetScene();
                     break;
             }
+        }
+
+        public void Stop()
+        {
+            playerEnable = false;
+        }
+
+        public void Restart()
+        {
+            playerEnable = true;
         }
 
         #endregion

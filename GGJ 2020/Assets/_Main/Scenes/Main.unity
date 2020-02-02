@@ -481,6 +481,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1674567734032761727, guid: dc3838f23cca04e20994dfd3a8b6d429,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1674567734032761724, guid: dc3838f23cca04e20994dfd3a8b6d429,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -494,7 +499,7 @@ PrefabInstance:
     - target: {fileID: 1674567734032761724, guid: dc3838f23cca04e20994dfd3a8b6d429,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.33
+      value: -3.13
       objectReference: {fileID: 0}
     - target: {fileID: 1674567734032761724, guid: dc3838f23cca04e20994dfd3a8b6d429,
         type: 3}
@@ -1042,7 +1047,7 @@ PrefabInstance:
     - target: {fileID: 1674567734032761724, guid: dc3838f23cca04e20994dfd3a8b6d429,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.33
+      value: -3.13
       objectReference: {fileID: 0}
     - target: {fileID: 1674567734032761724, guid: dc3838f23cca04e20994dfd3a8b6d429,
         type: 3}
@@ -2617,7 +2622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1850863763}
-  gameDurationSeconds: 15
+  gameDurationSeconds: 30
 --- !u!1001 &1641241091
 PrefabInstance:
   m_ObjectHideFlags: 0
