@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorSceneName: ModeSelector
-  numberOfPlayers: 4
+  numberOfPlayers: 3
 --- !u!114 &898408751
 MonoBehaviour:
   m_ObjectHideFlags: 0
