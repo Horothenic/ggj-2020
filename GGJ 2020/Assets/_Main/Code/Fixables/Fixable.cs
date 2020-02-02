@@ -8,7 +8,9 @@ namespace Fixables
         #region FIELDS
 
         [Header("COMPONENTS")]
-        [SerializeField] private Sprite sprite = null;
+        [SerializeField] private Sprite normalSprite = null;
+        [SerializeField] private Sprite brokenSprite = null;
+        [SerializeField] private SpriteRenderer spriteRenderer = null;
 
         [Header("CONFIGURATIONS")]
         [SerializeField] private string floorTag = "Floor";
@@ -29,7 +31,7 @@ namespace Fixables
 
         public int Ticks { get => ticks; }
         public int Points { get => points; }
-        public Sprite Sprite { get => sprite; }
+        public Sprite Sprite { get => normalSprite; }
         public bool IsGrabbable { get => grabEnable; }
 
         #endregion
@@ -39,7 +41,13 @@ namespace Fixables
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == floorTag)
-                grabEnable = true;
+                Broken();
+        }
+
+        private void Broken()
+        {
+            grabEnable = true;
+            spriteRenderer.sprite = brokenSprite;
         }
 
         public void Grabbed(string playerId)
