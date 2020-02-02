@@ -35,6 +35,7 @@ namespace Game
 
         public void StartGame(string playerId)
         {
+            Debug.Log(playerId);
             if (!playersRegistered.Contains(playerId))
                 playersRegistered.Add(playerId);
 
