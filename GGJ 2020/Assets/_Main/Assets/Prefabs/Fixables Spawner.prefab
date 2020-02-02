@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3889765763328586213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3889765763328586212}
+  - component: {fileID: 3889765763328586215}
+  m_Layer: 0
+  m_Name: Fixables Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3889765763328586212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889765763328586213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3889765763328586215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889765763328586213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360644a14402f424396560e94e255570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnArea: {x: -10, y: 10, z: -8.5, w: 5}
+  spawnHeight: 20
+  fixablesParent: {fileID: 0}
+  fixablePrefabs:
+  - {fileID: 566617937589573763, guid: 78a2fa17013f14f0fa6768086ec7dd1a, type: 3}
+  - {fileID: 566617937589573763, guid: 7c8542436289b47c78a5525801af6bac, type: 3}
+  - {fileID: 566617937589573763, guid: 3191b1a896aa74f7dbb44e391c0137db, type: 3}
+  - {fileID: 566617937589573763, guid: 55ab2f852c722417783c69d6548f63cf, type: 3}
+  - {fileID: 566617937589573763, guid: d6e185032a1774f6e89af90a889ef8bc, type: 3}
+  - {fileID: 566617937589573763, guid: e5473056156744edf8255cb2856fd13d, type: 3}
+  fixablesLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  raycastRadius: 1.5
+  initialInterval: 2
+  intervalReduction: 0.04
+  accelerationFactor: 2
+  minimumInterval: 0.5
+  randomExtraIntervalRange: 0.12
+  currentInterval: 0
