@@ -42,7 +42,7 @@ namespace Teams
 
         private void UpdateScore(string[] keys, float value)
         {
-            if (keys.IsEqual(this.keys))
+            if (!keys.IsEqual(this.keys))
                 return;
 
             UpdateScore(value);
