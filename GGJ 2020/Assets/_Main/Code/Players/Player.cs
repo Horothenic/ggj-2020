@@ -45,7 +45,7 @@ namespace Players
             switch (gameManager.GameState)
             {
                 case GameState.BeforeStart:
-                    gameManager.StartGame();
+                    gameManager.StartGame(id);
                     break;
                 case GameState.GameEnded:
                     gameManager.ResetScene();

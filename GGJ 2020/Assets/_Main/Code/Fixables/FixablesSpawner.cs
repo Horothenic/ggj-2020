@@ -19,7 +19,7 @@ namespace Fixables
         [SerializeField] private Vector4 spawnArea = default(Vector4);
         [SerializeField] private float spawnHeight = default(float);
         [SerializeField] private Transform fixablesParent = null;
-        [SerializeField] private Fixable fixablePrefab = null;
+        [SerializeField] private Fixable[] fixablePrefabs = null;
 
         [Header("CONFIGURATIONS")]
         [SerializeField] private LayerMask fixablesLayer = default(LayerMask);
@@ -81,7 +81,7 @@ namespace Fixables
             }
             while (FixableRightBelow(position));
 
-            Instantiate(fixablePrefab, position, Quaternion.identity, fixablesParent);
+            Instantiate(fixablePrefabs[Random.Range(0, fixablePrefabs.Length)], position, Quaternion.identity, fixablesParent);
         }
 
         private Vector3 GetRandomPosition()
