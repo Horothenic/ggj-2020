@@ -27,12 +27,23 @@ PrefabInstance:
     - target: {fileID: 6462517662472804908, guid: 1fda407bee6684662880db1bd04746d0,
         type: 3}
       propertyPath: ticks
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6462517662472804908, guid: 1fda407bee6684662880db1bd04746d0,
         type: 3}
       propertyPath: points
-      value: 15
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050953167331331140, guid: 1fda407bee6684662880db1bd04746d0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5276f243dab34f23b9b3ae4ed20f658,
+        type: 3}
+    - target: {fileID: 8050953167331331140, guid: 1fda407bee6684662880db1bd04746d0,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6462517662472804904, guid: 1fda407bee6684662880db1bd04746d0,
         type: 3}
@@ -88,17 +99,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050953167331331140, guid: 1fda407bee6684662880db1bd04746d0,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a5276f243dab34f23b9b3ae4ed20f658,
-        type: 3}
-    - target: {fileID: 8050953167331331140, guid: 1fda407bee6684662880db1bd04746d0,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1693866916451840928, guid: 1fda407bee6684662880db1bd04746d0,
         type: 3}
